@@ -6,7 +6,7 @@
     "build": "webpack --devtool eval-source-map",
     "buildProd": "webpack",
     "prebuild": "rimraf public",
-    "start": "http-server -p 8086",
+    "start": "http-server -S -K \"../cert.key\" -C \"../cert.crt\" -p 8086",
     "prestart": "npm run build"
   },
   "repository": {
@@ -43,6 +43,7 @@
     "@babel/polyfill": "^7.2.5",
     "@webcomponents/webcomponentsjs": "^2.2.1",
     "navigo": "^7.1.2",
+    "openid-client": "^2.4.5",
     "postal": "^2.0.5"
   }
 }

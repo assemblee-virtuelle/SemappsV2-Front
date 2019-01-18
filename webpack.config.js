@@ -17,6 +17,12 @@ module.exports = [{
      chunks: 'all'
    }
  },
+ node: {
+  console: true,
+  fs: 'empty',
+  net: 'empty',
+  tls: 'empty'
+  },
   module: {
     rules: [{
       test: /\.js$/,

@@ -14,17 +14,17 @@ export default class Router {
       this.router.navigate('/accueil');
     }).resolve();
 
-    this.router.on('/:screen', (params, query) => {
+    this.router.on('/:page', (params, query) => {
+      console.log('route', params, query);
+      this.publish('route',params);
+    }).resolve();
+
+    this.router.on('/:page/:id', (params, query) => {
       // console.log('route', params, query);
       this.publish('route',params);
     }).resolve();
 
-    this.router.on('/:screen/:id', (params, query) => {
-      // console.log('route', params, query);
-      this.publish('route',params);
-    }).resolve();
-
-    this.router.on('/:screen/:id/:action', (params, query) => {
+    this.router.on('/:page/:id/:action', (params, query) => {
       // console.log('route', params, query);
       this.publish('route',params);
     }).resolve();

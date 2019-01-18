@@ -1,5 +1,7 @@
 import vue from 'html-loader!./vue.html';
 
+import login from './Login/model.js';
+
 export default class Header extends HTMLElement{
 
     constructor(){
@@ -17,7 +19,6 @@ export default class Header extends HTMLElement{
           injectedStyle.appendChild(document.createTextNode(style.innerText));
           this.shadowRoot.appendChild(injectedStyle)
         })
-    
     }
 
     setChannel(channel){
