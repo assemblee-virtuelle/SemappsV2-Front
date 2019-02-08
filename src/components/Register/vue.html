@@ -7,21 +7,35 @@
 
             <label for="prenom"><b>Prénom</b></label>
             <input type="text" placeholder="Votre prénom" name="prenom" required>
+            <div id="prenom_empty" style="display:none" name="form_err">Rentrez votre prénom</div>
+            <div id="prenom_err" style="display:none" name="form_err">Votre prénom ne peut contenir que des lettres</div>
 
             <label for="nom"><b>Nom</b></label>
             <input type="text" placeholder="Votre nom" name="nom" required>
+            <div id="nom_empty" style="display:none" name="form_err">Rentrez votre nom</div>
+            <div id="nom_err" style="display:none" name="form_err">Votre nom ne peut contenir que des lettres</div>
 
             <label for="pseudo"><b>Pseudo</b></label>
             <input type="text" placeholder="Votre pseudo" name="pseudo" required>
+            <div id="pseudo_empty" style="display:none" name="form_err">Rentrez votre pseudo</div>
+            <div id="pseudo_err" style="display:none" name="form_err">Votre pseudo ne peut contenir que des lettres</div>
 
             <label for="email"><b>Email</b></label>
             <input type="text" placeholder="Votre adresse mail" name="email" required>
+            <div id="email_empty" style="display:none" name="form_err">Rentrez votre adresse mail</div>
+            <div id="email_err" style="display:none" name="form_err">Adresse mail non valide</div>
 
             <label for="psw"><b>Mot de passe</b></label>
             <input type="password" placeholder="Votre mot de passe" name="psw" required>
+            <div id="psw_empty" style="display:none" name="form_err">Rentrez votre mot de passe</div>
+            <div id="psw_err" style="display:none" name="form_err">Votre mot de passe doit contenir au moins une majuscule, une minuscule, un chiffre ainsi qu\'un caratère spécial</div>
+            <div id="psw_dif" style="display:none" name="form_err">Les mots de passe ne correspondent pas</div>
+            <div id="psw_size_min" style="display:none" name="form_err">Votre mot de passe doit faire au moins 7 caractères</div>
+            <div id="psw_size_max" style="display:none" name="form_err">Votre mot de passe doit faire moins 20 caractères</div>
 
             <label for="psw-repeat"><b>Confirmer mot de passe</b></label>
             <input type="password" placeholder="Confirmez votre mot de passe" name="psw-repeat" required>
+            <div id="psw-r_empty" style="display:none" name="form_err">Confirmez votre mot de passe</div>
             <hr>
 
             <!--<p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>-->
@@ -65,7 +79,7 @@
 
     /* Set a style for the submit/register button */
     .registerbtn {
-        background-color: #4CAF50;
+        background-color: #28ccfb;
         color: white;
         padding: 16px 20px;
         margin: 8px 0;
@@ -88,5 +102,9 @@
     .signin {
         background-color: #f1f1f1;
         text-align: center;
+    }
+
+    div[name="form_err"] {
+        padding-bottom: 15px;
     }
 </style>

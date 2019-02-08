@@ -5,10 +5,11 @@ import postal from 'postal';
 import header from './components/Header/model.js';
 import accueil from './components/Accueil/model.js';
 import register from './components/Register/model.js';
+import footer from './components/Footer/model.js';
 
 import Router from './control/Router.js';
 
-//sass files
+//sass files 
 import cssGlobal from './styles/colors.scss';
 import cssColors from './styles/global.scss';
 

@@ -1,8 +1,6 @@
 import vue from 'html-loader!./vue.html';
 
-import login from './Login/model.js';
-
-export default class Header extends HTMLElement{
+export default class Footer extends HTMLElement{
 
     constructor(){
         super();
@@ -25,4 +23,4 @@ export default class Header extends HTMLElement{
         this.channel = channel;
     }
 }
-window.customElements.define('header-wc', Header);
+window.customElements.define('footer-wc', Footer);
