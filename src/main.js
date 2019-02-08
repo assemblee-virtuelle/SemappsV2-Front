@@ -2,16 +2,16 @@
 import postal from 'postal';
 
 //WebComponents
-import header from './components/Header/model.js';
-import accueil from './components/Accueil/model.js';
-import register from './components/Register/model.js';
-import footer from './components/Footer/model.js';
+import header from 'Components/Header/model.js';
+import accueil from 'Components/Accueil/model.js';
+import register from 'Components/Register/model.js';
+import footer from 'Components/Footer/model.js';
 
 import Router from './control/Router.js';
 
 //sass files 
-import cssGlobal from './styles/colors.scss';
-import cssColors from './styles/global.scss';
+import cssGlobal from 'Styles/colors.css';
+import cssColors from 'Styles/global.css';
 
 let loadComponent = function(comp) {
     let main = document.querySelector('#middle');
