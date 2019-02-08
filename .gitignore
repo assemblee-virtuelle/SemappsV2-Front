@@ -1,2 +1,4 @@
 /node_modules
-/public
+/public/**/*.js
+/public/**/*.html
+/public/**/*.css
