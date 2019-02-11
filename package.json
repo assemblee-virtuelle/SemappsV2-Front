@@ -47,7 +47,7 @@
     "@babel/polyfill": "^7.2.5",
     "@webcomponents/webcomponentsjs": "^2.2.1",
     "navigo": "^7.1.2",
-    "openid-client": "^2.4.5",
+    "oidc-client": "^1.6.1",
     "postal": "^2.0.5"
   }
 }

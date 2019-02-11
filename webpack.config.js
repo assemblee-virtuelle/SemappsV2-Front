@@ -44,13 +44,6 @@ module.exports = [{
 			}
     }
   },
-  node: {
-    // console: true,
-    fs: 'empty',
-    module: 'empty',
-    tls: 'empty',
-    net: 'empty'
-  },
   module: {
     rules: [{
       test: /\.js$/,
