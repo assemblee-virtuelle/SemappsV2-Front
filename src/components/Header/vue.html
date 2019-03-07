@@ -1,14 +1,25 @@
-<!-- <div class="wc-container">
+<div class="wc-container">
     <login-wc></login-wc>
-</div> -->
-<div class="header">
-    <a class="item active" href="#">Assemblée virtuelle</a>
-    <a class="item" href="#">Acceuil</a>
-    <a class="item" href="#">Sign in</a>
-    <a class="item" href="/#/register">Sign up</a>
-    <a class="item" href="#">Contact</a>
-    <a class="item" href="#">About</a>
 </div>
+<div class="header">
+    <a class="active" href="#">Assemblée virtuelle</a>
+    <a href="#">Acceuil</a>
+    <a href="#">Sign in</a>
+    <!--<a href="/#/register">Sign up</a>-->
+    <button id="open-modal" class="my-button">Sign up</button>
+    <a href="#">Contact</a>
+    <a href="#">About</a>
+</div>
+
+<div id="id01" class="my-modal">
+    <div class="my-modal-content">
+        <div class="my-container">
+            <span id="close-modal" class="my-button my-display-topright">&times;</span>
+            <register-wc></register-wc>
+        </div>
+    </div>
+</div>
+
 <style>
 
 /* Style the header with a grey background and some padding */
@@ -71,5 +82,54 @@ img.logo {
     .header-right {
         float: none;
     }
+}
+
+.my-button:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.my-button {
+/*    
+    display: inline-block;
+    padding: 8px 16px;
+    vertical-align: middle;*/
+    border: none;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    background-color: inherit;
+    /*text-align: center;
+    cursor: pointer;
+    white-space: nowrap*/
+}
+
+.my-modal {
+    z-index: 3;
+    display: none;
+    padding-top: 100px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4)
+}
+
+.my-modal-content {
+    margin: auto;
+    background-color: #fff;
+    position: relative;
+    padding: 0;
+    outline: 0;
+    width: 600px
+}
+
+.my-display-topright {
+    position: absolute;
+    right: 0;
+    top: 0
 }
 </style>

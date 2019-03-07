@@ -2,7 +2,7 @@ import vue from 'html-loader!./vue.html';
 
 export default class Register extends HTMLElement{
 
-    constructor(){
+    constructor(channel){
         super();
         this.attachShadow({
             mode: 'open'
@@ -17,17 +17,15 @@ export default class Register extends HTMLElement{
             injectedStyle.appendChild(document.createTextNode(style.innerText));
             this.shadowRoot.appendChild(injectedStyle)
         })
-        this.setListeners();
+        // this.setListeners();
+
     }
 
-    setListeners(){
-        let submitBtn = this.shadowRoot.querySelector('button[class=registerbtn]');
-        submitBtn.addEventListener("click", (e) => {
-            e.preventDefault();
-            let nom = this.shadowRoot.querySelector('input[name=nom]');
-            let prenom = this.shadowRoot.querySelector('input[name=prenom]');
+    eventDone() {
+            console.log('this :', this.channel);
             let pseudo = this.shadowRoot.querySelector('input[name=pseudo]');
             let email = this.shadowRoot.querySelector('input[name=email]');
+            let emailRepeat = this.shadowRoot.querySelector('input[name=email-repeat]');
             let pwd = this.shadowRoot.querySelector('input[name=psw]');
             let pwdRepeat = this.shadowRoot.querySelector('input[name=psw-repeat]');
 
@@ -41,32 +39,6 @@ export default class Register extends HTMLElement{
             let names = /^[A-Za-zéèêëçäàîï]+[ \-']?[A-Za-zéèêëçäàîï]*$/;
             let emailTest = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
             let checkForm = true;
-
-            if (nom.value == '')
-            {
-                let nomEmp = this.shadowRoot.getElementById("nom_empty");
-                nomEmp.style.display = 'block';
-                checkForm = false
-            }
-            else if (!names.test(nom.value))
-            {
-                let nomErr = this.shadowRoot.getElementById("nom_err");
-                nomErr.style.display = 'block';
-                checkForm = false
-            }
-
-            if (prenom.value == '')
-            {
-                let prenomEmp = this.shadowRoot.getElementById("prenom_empty");
-                prenomEmp.style.display = 'block';
-                checkForm = false
-            }
-            else if (!names.test(prenom.value))
-            {
-                let prenomErr = this.shadowRoot.getElementById("prenom_err");
-                prenomErr.style.display = 'block';
-                checkForm = false
-            }
 
             if (pseudo.value == '')
             {
@@ -91,6 +63,18 @@ export default class Register extends HTMLElement{
             {
                 let emailErr = this.shadowRoot.getElementById("email_err");
                 emailErr.style.display = 'block';
+                checkForm = false
+            }
+            else if (emailRepeat.value == '')
+            {
+                let emailREmp = this.shadowRoot.getElementById("email-r_empty");
+                emailREmp.style.display = 'block';
+                checkForm = false
+            }
+            else if (email.value != emailRepeat.value)
+            {
+                let emailDif = this.shadowRoot.getElementById("email_dif");
+                emailDif.style.display = 'block';
                 checkForm = false
             }
 
@@ -134,12 +118,29 @@ export default class Register extends HTMLElement{
             if (checkForm)
             {
                 console.log('Etape réussi !');
-		        window.location = "http://127.0.0.1:8086"; 
+		        //window.location = "http://127.0.0.1:8086"; 
             }
-        })};
+            this.channel.publish({
+                topic:'test',
+                data: 3
+            })
+    }
 
-    setChannel(channel){
-        this.channel = channel;
+    setListeners(){
+        let submitBtn = this.shadowRoot.querySelector('button[class=registerbtn]');
+        console.log('bite :', this.channel);
+        submitBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            this.eventDone();
+        });
+    }
+
+    static setChannel(channel){
+        if (!this.channel){
+        console.log("LELOLELO");
+        console.log('channel :', channel);
+            this.channel = channel;
+        }
     }
 }
 window.customElements.define('register-wc', Register);

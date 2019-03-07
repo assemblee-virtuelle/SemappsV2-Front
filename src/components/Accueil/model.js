@@ -6,16 +6,16 @@ export default class Accueil extends HTMLElement{
         super();
         this.attachShadow({
             mode: 'open'
-          });
+        });
         this.shadowRoot.innerHTML = vue;
     }
 
     connectedCallback() {
         this.propagatedStyle = this.querySelectorAll('style');
         this.propagatedStyle.forEach(style => {
-          let injectedStyle = document.createElement('style');
-          injectedStyle.appendChild(document.createTextNode(style.innerText));
-          this.shadowRoot.appendChild(injectedStyle)
+            let injectedStyle = document.createElement('style');
+            injectedStyle.appendChild(document.createTextNode(style.innerText));
+            this.shadowRoot.appendChild(injectedStyle)
         })
     }
 

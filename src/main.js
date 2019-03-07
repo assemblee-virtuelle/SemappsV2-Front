@@ -1,11 +1,13 @@
 //NPM Packages
 import postal from 'postal';
 
+//Module
+import MainModel from 'Models/MainModel.js';
+
 //WebComponents
-import header from 'Components/Header/model.js';
-import accueil from 'Components/Accueil/model.js';
-import register from 'Components/Register/model.js';
-import footer from 'Components/Footer/model.js';
+import Header from 'Components/Header/model.js';
+import Accueil from 'Components/Accueil/model.js';
+import Footer from 'Components/Footer/model.js';
 
 import Router from './control/Router.js';
 
@@ -31,12 +33,11 @@ let loadComponent = function(comp) {
 
 let start = async function(env) {
     let mainChannel = postal.channel('main');
-
+    Header.setChannel(mainChannel);
     let router = new Router();
     router.setChannel(mainChannel);
 
-    // let mainModel = new MainModel();
-    // mainModel.setChannel(mainChannel);
+    let mainModel = new MainModel(mainChannel);
 
     mainChannel.subscribe('route', route => {
         console.log('route :', route);
