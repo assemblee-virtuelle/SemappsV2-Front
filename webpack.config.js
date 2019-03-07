@@ -31,6 +31,7 @@ module.exports = [{
     alias: {
       Components: path.resolve(__dirname, 'src/components/'),
       Styles: path.resolve(__dirname, 'src/styles/'),
+      Models: path.resolve(__dirname, 'src/models/'),
     }
   },
   optimization: {
