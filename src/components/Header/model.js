@@ -1,7 +1,7 @@
 import vue from 'html-loader!./vue.html';
 
 import login from './Login/model.js';
-import Register from 'Components/Register/model.js';
+import Register from './Register/model.js';
 
 
 export default class Header extends HTMLElement{
@@ -11,7 +11,7 @@ export default class Header extends HTMLElement{
         this.attachShadow({
             mode: 'open'
         });
-        console.log('this.channel :', this.channel);
+        //console.log('this.channel :', this.channel);
         this.shadowRoot.innerHTML = vue;
     }
 
@@ -26,29 +26,51 @@ export default class Header extends HTMLElement{
     }
 
     setListeners() {
-        let openModalBtn = this.shadowRoot.getElementById('open-modal');
-        openModalBtn.addEventListener("click", (e) => {
+        let openModalRegBtn = this.shadowRoot.getElementById('open-modal-reg');
+        openModalRegBtn.addEventListener("click", (e) => {
             e.preventDefault();
-            let modal = this.shadowRoot.getElementById('id01');
+            let modal = this.shadowRoot.getElementById('reg');
             modal.style.display = 'block';
         })
-        let closeModalBtn = this.shadowRoot.getElementById('close-modal');
-        closeModalBtn.addEventListener("click", (e) => {
+        let closeModalRegBtn = this.shadowRoot.getElementById('close-modal-reg');
+        closeModalRegBtn.addEventListener("click", (e) => {
             e.preventDefault();
-            let modal = this.shadowRoot.getElementById('id01');
+            let modal = this.shadowRoot.getElementById('reg');
             modal.style.display = 'none';
         })
-        let modal = this.shadowRoot.getElementById('id01');
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = 'none';
+        let modalReg = this.shadowRoot.getElementById('reg');
+        this.shadowRoot.addEventListener("click", (e) => {
+            if (e.target == modalReg) {
+                modalReg.style.display = 'none';
             }
-        }
+        })
+
+
+        let openModalLogBtn = this.shadowRoot.getElementById('open-modal-log');
+        openModalLogBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            let modal = this.shadowRoot.getElementById('log');
+            modal.style.display = 'block';
+        })
+        let closeModalLogBtn = this.shadowRoot.getElementById('close-modal-log');
+        closeModalLogBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            let modal = this.shadowRoot.getElementById('log');
+            modal.style.display = 'none';
+        })
+        let modalLog = this.shadowRoot.getElementById('log');
+        this.shadowRoot.addEventListener("click", (e) => {
+            if (e.target == modalLog) {
+                modalLog.style.display = 'none';
+            }
+        })
     }
 
     static setChannel(channel){
-        console.log("channel", channel);
-        Register.setChannel(channel);
+        console.log("channel head", channel);
+        //Register.setChannel(channel);
+        let reg = new Register(channel);
+        reg.setChannel(channel);
         this.channel = channel;
     }
 }

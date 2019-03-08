@@ -23,14 +23,14 @@ export default class Login extends HTMLElement{
 
     setListeners(){
         //TODO: Changer ptet
-        let submitBtn = this.shadowRoot.getElementById("submit");
-        submitBtn.addEventListener("click", () => {
-            let login = this.shadowRoot.getElementById("loginInput");
-            let password = this.shadowRoot.getElementById("passwordInput");
+        // let submitBtn = this.shadowRoot.getElementById("submit");
+        // submitBtn.addEventListener("click", () => {
+        //     let login = this.shadowRoot.getElementById("loginInput");
+        //     let password = this.shadowRoot.getElementById("passwordInput");
 
 
 
-        });
+        // });
     }
 
     setChannel(channel){

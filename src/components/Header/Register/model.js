@@ -7,6 +7,7 @@ export default class Register extends HTMLElement{
         this.attachShadow({
             mode: 'open'
         });
+        // this.setChannel(channel);
         this.shadowRoot.innerHTML = vue;
     }
 
@@ -17,12 +18,11 @@ export default class Register extends HTMLElement{
             injectedStyle.appendChild(document.createTextNode(style.innerText));
             this.shadowRoot.appendChild(injectedStyle)
         })
-        // this.setListeners();
-
+        this.setListeners();
     }
 
     eventDone() {
-            console.log('this :', this.channel);
+            console.log('channel in event :', this.channel);
             let pseudo = this.shadowRoot.querySelector('input[name=pseudo]');
             let email = this.shadowRoot.querySelector('input[name=email]');
             let emailRepeat = this.shadowRoot.querySelector('input[name=email-repeat]');
@@ -127,18 +127,20 @@ export default class Register extends HTMLElement{
     }
 
     setListeners(){
+//        this.setChannel();
         let submitBtn = this.shadowRoot.querySelector('button[class=registerbtn]');
-        console.log('bite :', this.channel);
+        console.log('channel in setListeners :', this.channel);
+        // console.log('submitBtn :', submitBtn);
+        // console.log('this.shadowRoot :', this.shadowRoot);
         submitBtn.addEventListener("click", (e) => {
             e.preventDefault();
             this.eventDone();
         });
     }
 
-    static setChannel(channel){
+    setChannel(channel){
         if (!this.channel){
-        console.log("LELOLELO");
-        console.log('channel :', channel);
+            console.log('channel reg :', channel);
             this.channel = channel;
         }
     }

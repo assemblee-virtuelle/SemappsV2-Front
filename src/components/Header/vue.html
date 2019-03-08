@@ -1,20 +1,30 @@
-<div class="wc-container">
+<!-- <div class="wc-container">
     <login-wc></login-wc>
-</div>
+</div> -->
 <div class="header">
     <a class="active" href="#">Assemblée virtuelle</a>
     <a href="#">Acceuil</a>
-    <a href="#">Sign in</a>
+    <!--<a href="#">Sign in</a>-->
+    <p id="open-modal-log" class="my-button">Sign in</p>
     <!--<a href="/#/register">Sign up</a>-->
-    <button id="open-modal" class="my-button">Sign up</button>
+    <p id="open-modal-reg" class="my-button">Sign up</p>
     <a href="#">Contact</a>
     <a href="#">About</a>
 </div>
 
-<div id="id01" class="my-modal">
-    <div class="my-modal-content">
+<div id="log" class="my-modal">
+    <div class="my-modal-content my-animate-zoom">
         <div class="my-container">
-            <span id="close-modal" class="my-button my-display-topright">&times;</span>
+            <span id="close-modal-log" class="my-button my-display-topright">&times;</span>
+            <login-wc></login-wc>
+        </div>
+    </div>
+</div>
+
+<div id="reg" class="my-modal">
+    <div class="my-modal-content my-animate-zoom">
+        <div class="my-container">
+            <span id="close-modal-reg" class="my-button my-display-topright">&times;</span>
             <register-wc></register-wc>
         </div>
     </div>
@@ -90,30 +100,25 @@ img.logo {
 }
 
 .my-button {
-/*    
-    display: inline-block;
-    padding: 8px 16px;
-    vertical-align: middle;*/
-    border: none;
-    overflow: hidden;
-    text-decoration: none;
-    color: inherit;
-    background-color: inherit;
-    /*text-align: center;
-    cursor: pointer;
-    white-space: nowrap*/
+    color: black;
+    text-align: center;
+    padding: 12px;
+    font-size: 18px; 
+    line-height: 25px;
+    border-radius: 4px;
+    flex-basis: auto;
 }
 
 .my-modal {
     z-index: 3;
     display: none;
-    padding-top: 100px;
+    padding-top: 75px;
+    /* padding-bottom: 75px; */
     position: fixed;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
     background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.4)
 }
@@ -124,12 +129,23 @@ img.logo {
     position: relative;
     padding: 0;
     outline: 0;
-    width: 600px
+    width: 600px;
+    overflow: auto;
+    max-height: calc(100% - 150px)
 }
 
 .my-display-topright {
     position: absolute;
     right: 0;
     top: 0
+}
+
+.my-animate-zoom {
+    animation: animatezoom 0.6s
+}
+
+@keyframes animatezoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
 }
 </style>
