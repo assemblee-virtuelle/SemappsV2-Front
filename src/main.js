@@ -33,11 +33,16 @@ let loadComponent = function(comp) {
 
 let start = async function(env) {
     let mainChannel = postal.channel('main');
-    Header.setChannel(mainChannel);
     let router = new Router();
     router.setChannel(mainChannel);
 
+    let head = document.querySelector('header-wc');
+    head.setChannel(mainChannel);
+    let foot = document.querySelector('footer-wc');
+    foot.setChannel(mainChannel);
+
     let mainModel = new MainModel(mainChannel);
+    mainModel.subscribeAll();
 
     mainChannel.subscribe('route', route => {
         console.log('route :', route);

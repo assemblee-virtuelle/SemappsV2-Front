@@ -66,10 +66,10 @@ export default class Header extends HTMLElement{
         })
     }
 
-    static setChannel(channel){
+    setChannel(channel){
         console.log("channel head", channel);
         //Register.setChannel(channel);
-        let reg = new Register(channel);
+        let reg = this.shadowRoot.querySelector('register-wc');
         reg.setChannel(channel);
         this.channel = channel;
     }

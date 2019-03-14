@@ -7,7 +7,6 @@ export default class Register extends HTMLElement{
         this.attachShadow({
             mode: 'open'
         });
-        // this.setChannel(channel);
         this.shadowRoot.innerHTML = vue;
     }
 
@@ -35,7 +34,6 @@ export default class Register extends HTMLElement{
             })
 
             let pwdExpression = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/;
-            //let letters = /^[A-Za-z]+$/;
             let names = /^[A-Za-zéèêëçäàîï]+[ \-']?[A-Za-zéèêëçäàîï]*$/;
             let emailTest = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
             let checkForm = true;
@@ -118,20 +116,24 @@ export default class Register extends HTMLElement{
             if (checkForm)
             {
                 console.log('Etape réussi !');
-		        //window.location = "http://127.0.0.1:8086"; 
+                console.log('pseudo :', pseudo.value);
+                console.log('email :', email.value);
+                console.log('pwd :', pwd.value);
+                this.channel.publish({
+                    topic:'register',
+                    data:{
+                        username: pseudo.value,
+                        email: email.value,
+                        password: pwd.value
+                    }
+                })
+                    //window.location = "http://127.0.0.1:8086"; 
             }
-            this.channel.publish({
-                topic:'test',
-                data: 3
-            })
     }
 
     setListeners(){
-//        this.setChannel();
         let submitBtn = this.shadowRoot.querySelector('button[class=registerbtn]');
         console.log('channel in setListeners :', this.channel);
-        // console.log('submitBtn :', submitBtn);
-        // console.log('this.shadowRoot :', this.shadowRoot);
         submitBtn.addEventListener("click", (e) => {
             e.preventDefault();
             this.eventDone();
@@ -139,10 +141,8 @@ export default class Register extends HTMLElement{
     }
 
     setChannel(channel){
-        if (!this.channel){
-            console.log('channel reg :', channel);
-            this.channel = channel;
-        }
+        console.log('channel reg :', channel);
+        this.channel = channel;
     }
 }
 window.customElements.define('register-wc', Register);
