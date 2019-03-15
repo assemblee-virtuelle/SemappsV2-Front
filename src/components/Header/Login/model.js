@@ -22,15 +22,46 @@ export default class Login extends HTMLElement{
     }
 
     setListeners(){
-        //TODO: Changer ptet
-        // let submitBtn = this.shadowRoot.getElementById("submit");
-        // submitBtn.addEventListener("click", () => {
-        //     let login = this.shadowRoot.getElementById("loginInput");
-        //     let password = this.shadowRoot.getElementById("passwordInput");
+        let submitBtn = this.shadowRoot.querySelector('button[class=loginBtn]');
+        submitBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            let pseudo = this.shadowRoot.querySelector('input[name=username]');
+            let pwd = this.shadowRoot.querySelector('input[name=pwd]');
+            let checkForm = true;
 
+            let errorsDiv = this.shadowRoot.querySelectorAll('div[name=form_er]');
+            errorsDiv.forEach((result) => {
+                result.style.display = 'none'
+            })
 
+            if (pseudo.value == '')
+            {
+                let pseudoEmp = this.shadowRoot.getElementById("pseudo_emp");
+                pseudoEmp.style.display = 'block';
+                checkForm = false
+            }
+            if (pwd.value == '')
+            {
+                let pwdEmp = this.shadowRoot.getElementById("psw_emp");
+                pwdEmp.style.display = 'block';
+                checkForm = false
+            }
 
-        // });
+            if (checkForm)
+            {
+                console.log('Log in !');
+                console.log('email :', pseudo.value);
+                console.log('pwd :', pwd.value);
+                this.channel.publish({
+                    topic:'login',
+                    data:{
+                        email: pseudo.value,
+                        password: pwd.value
+                    }
+                })
+                window.location = "http://127.0.0.1:8086"; 
+            }
+        });
     }
 
     setChannel(channel){

@@ -1,9 +1,11 @@
 <div class="wc-container">
     <div>
-        <div class="container">
+        <div class="container register">
             <h1>S'enregistrer</h1>
             <p>Remplissez ces informations afin de vous enregistrer.</p>
             <hr>
+
+            <div id="already_exist" style="display:none" name="form_err">Cette adresse mail est déjà utilisée</div>
 
             <label for="pseudo"><b>Pseudo</b></label>
             <input type="text" placeholder="Votre pseudo" name="pseudo">
@@ -38,7 +40,7 @@
         </div>
 
         <div class="container signin">
-            <p>Vous possédez déjà un compte ? <a href="#">Se connecter</a>.</p>
+            <p>Vous possédez déjà un compte ? <a class="connectBtn">Se connecter</a>.</p>
         </div>
     </div>
 </div>
@@ -101,5 +103,6 @@
 
     div[name="form_err"] {
         padding-bottom: 15px;
+        color: red;
     }
 </style>

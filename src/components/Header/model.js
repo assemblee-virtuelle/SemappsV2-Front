@@ -11,7 +11,6 @@ export default class Header extends HTMLElement{
         this.attachShadow({
             mode: 'open'
         });
-        //console.log('this.channel :', this.channel);
         this.shadowRoot.innerHTML = vue;
     }
 
@@ -25,12 +24,27 @@ export default class Header extends HTMLElement{
         this.setListeners();
     }
 
+    subGoConnect() {
+        this.channel.subscribe({
+            topic: 'goToConnect',
+            callback: data => {
+                if (data) {
+                    let modalReg = this.shadowRoot.getElementById('reg');
+                    modalReg.style.display = 'none';
+                    let modalLog = this.shadowRoot.getElementById('log');
+                    modalLog.style.display = 'block';
+                }
+            }
+        })
+    }
+
     setListeners() {
         let openModalRegBtn = this.shadowRoot.getElementById('open-modal-reg');
         openModalRegBtn.addEventListener("click", (e) => {
             e.preventDefault();
             let modal = this.shadowRoot.getElementById('reg');
             modal.style.display = 'block';
+            this.subGoConnect();
         })
         let closeModalRegBtn = this.shadowRoot.getElementById('close-modal-reg');
         closeModalRegBtn.addEventListener("click", (e) => {
@@ -44,7 +58,6 @@ export default class Header extends HTMLElement{
                 modalReg.style.display = 'none';
             }
         })
-
 
         let openModalLogBtn = this.shadowRoot.getElementById('open-modal-log');
         openModalLogBtn.addEventListener("click", (e) => {
@@ -67,10 +80,10 @@ export default class Header extends HTMLElement{
     }
 
     setChannel(channel){
-        console.log("channel head", channel);
-        //Register.setChannel(channel);
         let reg = this.shadowRoot.querySelector('register-wc');
         reg.setChannel(channel);
+        let log = this.shadowRoot.querySelector('login-wc');
+        log.setChannel(channel);
         this.channel = channel;
     }
 }

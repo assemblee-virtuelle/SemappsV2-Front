@@ -1,4 +1,6 @@
 import { pseudoRandomBytes } from "crypto";
+import qs from 'qs';
+
 
 export default class MainModel {
 
@@ -8,6 +10,7 @@ export default class MainModel {
 
     subscribeAll(){
         this._getRegister();
+        this._getLogin();
     }
 
     _getRegister(){
@@ -15,13 +18,49 @@ export default class MainModel {
             topic: 'register',
             callback: (data) => {
                 console.log("register");
-
                 fetch("http://localhost:3000/v1/auth/new", {
                     method:'POST',
-                    header:{
-                        "content-type": "application/json"
+                    headers:{
+                        "content-type": "application/x-www-form-urlencoded"
                     },
-                    body:JSON.stringify(data)
+                    body:qs.stringify(data)
+                })
+                .then(response => {
+                    console.log('response.status :', response.status);
+                    if (response.status == 409) {
+                        this.channel.publish ({
+                            topic: "regResponse",
+                            data: "alreadyExist"
+                        })
+                    }
+                    else {
+                        this.channel.publish ({
+                            topic: "regResponse",
+                            data: "done"
+                        })
+                    }
+                    return response.json()
+                })
+                .then(json => {
+                    localStorage.setItem('id', json.id);
+                    console.log('json :', json);
+                })
+                .catch(err => console.log('err :', err))
+            }
+        });
+    }
+
+    _getLogin(){
+        this.channel.subscribe({
+            topic: 'login',
+            callback: (data) => {
+                console.log("login");
+                fetch("http://localhost:3000/v1/auth/login", {
+                    method:'POST',
+                    headers:{
+                        "content-type": "application/x-www-form-urlencoded"
+                    },
+                    body:qs.stringify(data)
                 })
                 .then(response => {
                     console.log('response.status :', response.status);
@@ -35,27 +74,4 @@ export default class MainModel {
             }
         });
     }
-
-    // register(){
-    //     let data;
-
-    //     fetch("http://localhost:3000/v1/auth/new", {
-    //         method:'POST',
-    //         body:{
-    //             email:"test",
-    //             password:"bite",
-    //             username:"toto"
-    //         }
-    //     })
-    //     .then(response => {
-    //         console.log('response.status :', response.status);
-    //         return response.json()
-    //     })
-    //     .then(json => {
-    //         localStorage.setItem('id', json.id);
-    //         console.log('json :', json);
-    //     })
-    //     .catch(err => console.log('err :', err))
-
-    // }
 }

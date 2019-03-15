@@ -1,14 +1,17 @@
 <div class="wc-container">
     <div>
-        <div class="container">
+        <div class="container login">
             <h1>Se connecter</h1>
             <p>Remplissez ces informations afin de vous connecter.</p>
             <hr>
 
-            <label for="pseudo"><b>Pseudo</b></label>
-            <input type="text" placeholder="Votre pseudo" name="pseudo">
+            <label for="pseudo"><b>Pseudo/Email</b></label>
+            <input type="text" placeholder="Votre pseudo" name="username">
+            <div id="pseudo_emp" style="display:none" name="form_er">Rentrez votre pseudo ou votre adresse mail</div>
+
             <label for="psw"><b>Mot de passe</b></label>
-            <input type="password" placeholder="Votre mot de passe" name="psw">
+            <input type="password" placeholder="Votre mot de passe" name="pwd">
+            <div id="psw_emp" style="display:none" name="form_er">Rentrez votre mot de passe</div>
 
             <button class="loginBtn" id="submit">Se connecter</button>
         </div>
@@ -71,7 +74,8 @@
         text-align: center;
     }
 
-    div[name="form_err"] {
+    div[name="form_er"] {
         padding-bottom: 15px;
+        color: red;
     }
 </style>
