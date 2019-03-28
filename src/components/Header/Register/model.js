@@ -32,7 +32,7 @@ export default class Register extends HTMLElement{
             result.style.display = 'none'
         })
 
-        let pwdExpression = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/;
+        let pwdExpression = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.{6,})/;
         let names = /^[A-Za-zéèêëçäàîï]+[ \-']?[A-Za-zéèêëçäàîï]*$/;
         let emailTest = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
         let checkForm = true;

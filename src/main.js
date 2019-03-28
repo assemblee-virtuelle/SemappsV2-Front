@@ -45,7 +45,6 @@ let start = async function(env) {
     mainModel.subscribeAll();
 
     mainChannel.subscribe('route', route => {
-        console.log('route :', route);
         let comp = route.page + '-wc';
         let component = loadComponent(comp);
         component.setChannel(mainChannel);

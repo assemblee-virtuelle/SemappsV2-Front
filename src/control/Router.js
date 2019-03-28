@@ -24,8 +24,8 @@ export default class Router {
       this.publish('route',params);
     }).resolve();
 
-    this.router.on('/:page/:id/:action', (params, query) => {
-      // console.log('route', params, query);
+    this.router.on('/resource/:type/:id', (params, query) => {
+      console.log('route', params, query);
       this.publish('route',params);
     }).resolve();
   }
