@@ -59,7 +59,18 @@ export default class Login extends HTMLElement{
                         password: pwd.value
                     }
                 })
-                window.location = "http://127.0.0.1:8086"; 
+                this.channel.subscribe({
+                    topic: 'logResponse',
+                    callback: (data) => {
+                        if (data == "noExist") {
+                            let noExist = this.shadowRoot.getElementById("no_exist");
+                            noExist.style.display = 'block';
+                        }
+                        else if (data == "done"){
+                            window.location = "http://127.0.0.1:8086"; 
+                        }
+                    }
+                })
             }
         });
     }

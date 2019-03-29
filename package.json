@@ -45,9 +45,13 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
+    "@rdfjs/parser-jsonld": "^1.1.1",
+    "@rdfjs/serializer-jsonld": "^1.2.0",
     "@webcomponents/webcomponentsjs": "^2.2.1",
     "navigo": "^7.1.2",
     "oidc-client": "^1.6.1",
-    "postal": "^2.0.5"
+    "postal": "^2.0.5",
+    "qs": "^6.6.0",
+    "rdf-ext": "^1.2.2"
   }
 }

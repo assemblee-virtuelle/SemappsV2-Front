@@ -7,6 +7,8 @@ import MainModel from 'Models/MainModel.js';
 //WebComponents
 import Header from 'Components/Header/model.js';
 import Accueil from 'Components/Accueil/model.js';
+import FormDoc from 'Components/FormDoc/model.js';
+import FormPers from 'Components/FormPers/model.js';
 import Footer from 'Components/Footer/model.js';
 
 import Router from './control/Router.js';

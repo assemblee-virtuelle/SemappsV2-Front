@@ -1,0 +1,110 @@
+<div class="wc-container">
+    <div>
+        <div class="container register">
+            <h1>Créer un nouveau document</h1>
+            <p>Remplissez ces informations afin de créer votre document.</p>
+            <hr>
+
+            <label for="nom"><b>Nom</b></label>
+            <input type="text" placeholder="Nom du document" name="nom">
+            <div id="nom_empty" style="display:none" name="form_err">Rentrez le nom</div>
+
+            <label for="description"><b>Description</b></label>
+            <textarea name="description" class="form-control"></textarea>
+            <div id="desc_empty" style="display:none" name="form_err">Rentrez une description</div>
+
+            <label for="auteur"><b>Auteur</b></label>
+            <input type="text" placeholder="Nom de l'auteur" name="auteur">
+            <div id="aut_empty" style="display:none" name="form_err">Rentrez l'auteur</div>
+
+            <label for="thematique"><b>Thématique</b></label>
+            <input type="text" placeholder="La thématique du document" name="thematique">
+            <div id="theme_empty" style="display:none" name="form_err">Rentrez la thématique</div>
+            <hr>
+
+            <button class="docBtn">Créer</button>
+        </div>
+    </div>
+</div>
+
+<style>
+    * {box-sizing: border-box}
+
+    /* Add padding to containers */
+    .container {
+        padding: 16px;
+    }
+
+    /* Full-width input fields */
+    input[type=text], input[type=password] {
+        width: 100%;
+        padding: 15px;
+        margin: 5px 0 22px 0;
+        display: inline-block;
+        border: none;
+        background: #f1f1f1;
+    }
+
+    input[type=text]:focus, input[type=password]:focus {
+        background-color: #ddd;
+        outline: none;
+    }
+
+    /* Overwrite default styles of hr */
+    hr {
+        border: 1px solid #f1f1f1;
+        margin-bottom: 25px;
+    }
+
+    /* Set a style for the submit/register button */
+    .docBtn {
+        background-color: #28ccfb;
+        color: white;
+        padding: 16px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        opacity: 0.9;
+    }
+
+    .docBtn:hover {
+        opacity:1;
+    }
+
+    /* Add a blue text color to links */
+    a {
+        color: dodgerblue;
+    }
+
+    /* Set a grey background color and center the text of the "sign in" section */
+    .signin {
+        background-color: #f1f1f1;
+        text-align: center;
+    }
+
+    div[name="form_err"] {
+        padding-bottom: 15px;
+        color: red;
+    }
+
+    .form-control {
+        display: block;
+        width: 100%;
+        height: 50px;
+        padding: 15px;
+        margin-bottom: 20px;
+        margin-top: 5px;
+        font-size: 14px;
+        line-height: 1.42857143;
+        color: #555;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+        -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+        -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        transition: border-color ease-in-out.15s, box-shadow ease-in-out .15s;
+    }
+</style>
